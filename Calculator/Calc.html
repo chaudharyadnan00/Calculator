@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="Calc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../../others/files/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align: center;font-family: vardana;color: #ecf0f3;padding-top: 15px;padding-bottom: 0px;">Calculate what you want!</h1>
+    <div class="JackSparrow">
+            <div class="Pirate">
+                <input type="text" name="name" id="result" placeholder="0" required autocomplete="off">
+            <!-- <div class="4-btn"> -->
+                <button onclick="AC()" class="btn1" id="acBtn">AC</button>
+                <button onclick="show(this)" class="btn1">(</button>
+                <button onclick="show(this)" class="btn1">)</button>
+                <button onclick="divide(this)" class="btn2"><i class="fa fa-divide"></i></button>
+            <!-- </div> -->
+
+            <!-- <div class="4-btn"> -->
+                <button onclick="show(this)" class="btn3">7</button>
+                <button onclick="show(this)" class="btn3">8</button>
+                <button onclick="show(this)" class="btn3">9</button>
+                <button onclick="multiply(this)" class="btn2"><i class="fa fa-xmark-large"></i></button>
+            <!-- </div> -->
+
+            <!-- <div class="4-btn"> -->
+                <button onclick="show(this)" class="btn3">4</button>
+                <button onclick="show(this)" class="btn3">5</button>
+                <button onclick="show(this)" class="btn3">6</button>
+                <button onclick="show(this)" class="btn2">-</button>
+            <!-- </div> -->
+
+            <!-- <div class="4-btn"> -->
+                <button onclick="show(this)" class="btn3">1</button>
+                <button onclick="show(this)" class="btn3">2</button>
+                <button onclick="show(this)" class="btn3">3</button>
+                <button onclick="show(this)" class="btn2">+</button>
+            <!-- </div> -->
+
+            <!-- <div class="4-btn"> -->
+                <button onclick="show(this)" class="btn3">0</button>
+                <button onclick="show(this)" class="btn3">.</button>
+                <button onclick="del()" class="btn3"><i class="fa fa-arrow-left-long" style="color: black;font-weight: lighter;"></i></button>
+                <button onclick="equalsTo()" class="btn2">=</button>
+            <!-- </div> -->
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var result = document.getElementById('result');
+
+        function show(output) {
+            var n = output.innerHTML;
+            result.value += n;
+            document.getElementById('acBtn').innerHTML = 'CL';
+        }
+        function divide(output){
+            result.value+='/';
+        }
+        function multiply(output){
+            result.value+='*';
+        }
+
+        function equalsTo() {
+            try {
+                result.value = eval(result.value);
+                console.log(result.value);
+            } catch (err) {
+                alert("Not a valid operation");
+            }
+        }
+
+        function del() {
+            result.value = result.value.slice(0, result.value.length - 1);
+            if (result.value == "") {
+                document.getElementById('acBtn').innerHTML = 'AC';
+            } else {
+                document.getElementById('acBtn').innerHTML = 'CL';
+            }
+        }
+
+        function AC() {
+            result.value = "";
+            document.getElementById('acBtn').innerHTML = 'AC';
+        }
+    </script>
+</body>
+
+</html>
